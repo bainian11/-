@@ -1,16 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Jiaoyou from '../views/Jiaoyou/Jiaoyou.vue'
 import Xiaoxi from '../views/Xiaoxi/Xiaoxi.vue'
+import Geren from '../views/Geren/Geren.vue'
+
 
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/Message',
-    name: 'Message',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Message.vue')
+    path: '/Jiaoyou',
+    name: 'Jiaoyou',
+    component: Jiaoyou
   },
   {
     path: '/Xiaoxi',
@@ -18,9 +20,9 @@ const routes = [
     component: Xiaoxi
   },
   {
-    path: '/Inform',
-    name: 'Inform',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Inform.vue')
+    path: '/Geren',
+    name: 'Geren',
+    component: Geren
   },
 ]
 
