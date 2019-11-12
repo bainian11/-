@@ -5,9 +5,12 @@
       <div class="look">只看异性</div>
     </div>
     <div id="nav">
+<<<<<<< HEAD
       <router-link class="nav-left" to="/">红人</router-link>
       <router-link to="/about">活跃</router-link>
       <router-link class="nav-right" to="/Message">新面孔</router-link>
+=======
+>>>>>>> bfbf97beffb51a757da40a514c610f17ac5edda1
     </div>
 
     <div class="main-content">
@@ -62,6 +65,7 @@ export default {
   color: #2c3e50;
 }
 
+<<<<<<< HEAD
 #nav {
   padding: 15px;
   font-size: 15px;
@@ -76,6 +80,8 @@ export default {
   float: right;
   margin-right: 47px;
 }
+=======
+>>>>>>> bfbf97beffb51a757da40a514c610f17ac5edda1
 
 #nav a {
   font-weight: bold;
