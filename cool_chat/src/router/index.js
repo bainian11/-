@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Xiaoxi from '../views/Xiaoxi/Xiaoxi.vue'
+
 
 Vue.use(VueRouter)
 
@@ -23,6 +25,11 @@ const routes = [
     name: 'Message',
     component: () => import(/* webpackChunkName: "about" */ '../views/Message.vue')
   },
+  {
+    path: '/Xiaoxi',
+    name: 'Xiaoxi',
+    component: Xiaoxi
+  }
 ]
 
 const router = new VueRouter({
