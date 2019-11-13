@@ -19,10 +19,37 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
+    path: '/vedio',
+    name: 'vedio',
+    component: () => import(/* webpackChunkName: "vedio" */ '../views/Vedio.vue')
+  },
+  {
     path: '/Message',
     name: 'Message',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Message.vue')
+    component: () => import(/* webpackChunkName: "Message" */ '../views/Message.vue')
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+  },
+  {
+    path: '/account',
+    name: 'account',
+    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue')
+  },{
+    path: '/accountbind',
+    name: 'accountbind',
+    component: () => import(/* webpackChunkName: "accountbind" */ '../views/Accountbind.vue')
+  },{
+    path: '/advice',
+    name: 'advice',
+    component: () => import(/* webpackChunkName: "advice" */ '../views/Advice.vue')
+  },{
+    path: '/sex',
+    name: 'sex',
+    component: () => import(/* webpackChunkName: "sex" */ '../views/Sex.vue')
+  }
 ]
 
 const router = new VueRouter({
