@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="title">
-      <van-icon name="arrow-left" class="icon" />通知
+      <van-icon name="arrow-left" class="icon" @click="back"/>通知
     </div>
     <ul>
       <li v-for="info of infos" :key="info.id">
@@ -25,7 +25,11 @@ export default {
     return { infos };
   },
   components: {},
-  methods: {}
+  methods: {
+    back(){
+        this.$router.push({path:'/Xiaoxi'})
+    }
+  }
 };
 </script>
 

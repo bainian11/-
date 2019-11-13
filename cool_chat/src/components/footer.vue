@@ -1,19 +1,13 @@
 <template>
   <van-tabbar v-model="active" active-color="#fe5367">
-    <van-tabbar-item class="my-icon">
-      <router-link to="/Jiaoyou">
-        <van-icon name="like" class="my-icon" />
-      </router-link>
+    <van-tabbar-item class="my-icon" route to="/">
+      <van-icon name="like" class="my-icon" />
     </van-tabbar-item>
-    <van-tabbar-item>
-      <router-link to="/Xiaoxi">
-        <van-icon name="chat" class="my-icon" />
-      </router-link>
+    <van-tabbar-item route to="Xiaoxi">
+      <van-icon name="chat" class="my-icon" />
     </van-tabbar-item>
-    <van-tabbar-item>
-      <router-link to="/Geren">
-        <van-icon name="manager" class="my-icon" />
-      </router-link>
+    <van-tabbar-item route to="Geren">
+      <van-icon name="manager" class="my-icon" />
     </van-tabbar-item>
   </van-tabbar>
 </template>
@@ -24,12 +18,12 @@ export default {
     return {
       active: 0,
       icon: {
-        active: 'https://img.yzcdn.cn/vant/user-active.png',
-        inactive: 'https://img.yzcdn.cn/vant/user-inactive.png'
+        active: "https://img.yzcdn.cn/vant/user-active.png",
+        inactive: "https://img.yzcdn.cn/vant/user-inactive.png"
       }
-    }
+    };
   }
-}
+};
 </script>
 
 

@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <h3>消息</h3>
-    <div class="info">
+    <div class="info" @click="out">
       <van-icon name="volume" size="30px" class="icon" />&nbsp;&nbsp;
       <span>通知</span>
     </div>
@@ -27,7 +27,9 @@ export default {
   name: "Message",
   components: {},
   methods: {
-   
+      out(){
+        this.$router.push({path:'/Inform'})
+      }
   }
 };
 </script>
