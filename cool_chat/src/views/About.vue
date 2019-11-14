@@ -1,5 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+  
+     <router-link to="/Personal data">个人资料</router-link>
   </div>
 </template>
