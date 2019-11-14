@@ -9,13 +9,13 @@
       <van-icon name="phone" size="30px" class="icon" />&nbsp;&nbsp;
       <span>通话</span>
     </div>
-    <div class="visit">
+    <div class="visit" @click="visited">
       <van-icon name="friends" size="30px" class="icon" />&nbsp;&nbsp;
       <span>来访</span>
     </div>
     <h2>聊天消息</h2>
     <p>聊天消息手动查看途径:打开app→首页→最近联系过的人(聊天消息列表) ，即可查看</p>
-    <div class="looknow" >立即查看</div>
+    <div class="looknow">立即查看</div>
   </div>
 </template>
 
@@ -27,9 +27,12 @@ export default {
   name: "Message",
   components: {},
   methods: {
-      out(){
-        this.$router.push({path:'/Inform'})
-      }
+    out() {
+      this.$router.push({ path: "/Inform" ,query: { 'shopid': 1 }});
+    },
+    visited() {
+      this.$router.push({ path: "/Visited" });
+    }
   }
 };
 </script>

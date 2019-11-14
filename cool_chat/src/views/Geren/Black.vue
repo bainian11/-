@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="title">
+    <div class="title-b">
       <van-icon name="arrow-left" class="icon-b" @click="back" />
-      <p class="head">黑名单</p>
+      <p class="head-b">黑名单</p>
     </div>
     <div class="main">
       <li>
@@ -32,8 +32,8 @@ export default {
 };
 </script>
 
-<style>
-.title {
+<style scoped>
+.title-b {
   height: 39px;
   border-bottom: 0.5px #e6e6e6 solid;
   font-size: 17px;
@@ -44,10 +44,10 @@ export default {
   display: inline-block;
   line-height: 40px;
   float: left;
-  margin-top: 12px;
+  margin-top: 2px;
   margin-left: 10px;
 }
-.title .head {
+.title-b .head-b {
   display: inline-block;
   /* height: 39px; */
   line-height: 39px;

@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="header">
-      <p>交友</p>
+      <van-icon name="search" class="search"/>
+      <p class="title">交友</p>
       <div class="look">只看异性</div>
     </div>
     <div id="nav">
@@ -72,7 +73,7 @@ export default {
 
 <style scoped>
 #nav {
-  /* padding: 15px; */
+  padding: 0;
   font-size: 15px;
 }
 
@@ -110,7 +111,7 @@ export default {
   z-index: 5;
 }
 
-.header p {
+.header .title {
   font-size: 17px;
   width: 34px;
   height: 17px;
@@ -208,5 +209,11 @@ export default {
   padding: 0 10px;
   font-size: 10px;
   margin-top: 5px;
+}
+
+.search {
+  position: absolute;
+  left: 30px;
+  top: 10px;
 }
 </style>

@@ -5,11 +5,45 @@ import Xiaoxi from '../views/Xiaoxi/Xiaoxi.vue'
 import Geren from '../views/Geren/Geren.vue'
 import Inform from '../views/Xiaoxi/Inform.vue'
 import Black from '../views/Geren/Black.vue'
-import Photo from '../views/Geren/Upphoto.vue'
+import Upphoto from '../views/Geren/Upphoto.vue'
+import Setup from '../views/Geren/Set.vue'
+import Visited from '../views/Xiaoxi/Visited.vue'
+import photo from '../views/Geren/Photo.vue'
+import Account from '../views/Geren/Myaccount.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: Home
+  // },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // },
+  // {
+  //   path: '/Message',
+  //   name: 'Message',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Message.vue')
+  // },
+  {
+    path:'/phone_binding',
+    component:()=>import('../views/cjq/Phone_binding.vue')
+  },
+  {
+    path:'/code',
+    component:()=>import('../views/cjq/Code.vue')
+  },
+  {
+    path:'/set_up',
+    component:()=>import('../views/cjq/Set_up.vue')
+  },
   {
     path: '/',
     name: 'Jiaoyou',
@@ -35,9 +69,24 @@ const routes = [
     component: Black
   },
   {
-    path: '/Photo',
-    name: 'Photo',
-    component: Photo
+    path: '/Set',
+    name: 'Set',
+    component: Setup
+  },
+  {
+    path: '/Visited',
+    name: 'Visited',
+    component: Visited
+  },
+  {
+    path:'/visited',
+    component:()=>import('../views/cjq/Visited.vue')
+  },
+  
+  {
+    path: '/Upphoto',
+    name: 'Upphoto',
+    component: Upphoto
   },
   {
     path: '/myincome',
@@ -54,18 +103,16 @@ const routes = [
     name: 'myaccount',
     component: () => import('../views/Geren/Myaccount')
   },
-  
-  {
-    path: '/upphoto',
-    name: 'upphoto',
-    component: () => import('../views/Geren/Upphoto'),
-    // children:[]
-  },
   {
     path: '/photo',
     name: 'photo',
-    component: () => import('../views/Geren/Photo'),
-
+    // component: () => import('../views/Geren/Photo'),
+    component: photo
+  },
+  {
+    path: '/Account',
+    name: 'Account',
+    component: Account
   }
 
 

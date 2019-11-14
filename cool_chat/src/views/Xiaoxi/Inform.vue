@@ -29,7 +29,11 @@ export default {
     back(){
         this.$router.push({path:'/Xiaoxi'})
     }
+  },
+  mounted(){
+    console.log(this.$route.query.shopid)
   }
+
 };
 </script>
 

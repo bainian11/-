@@ -1,16 +1,16 @@
 <template>
   <div class="app">
     <header>
-      <van-icon name="arrow-left" class="header-left" />
+      <van-icon name="arrow-left" class="header-left" @click="back"/>
       <span class="header-collect">我的相册</span>
       <span class="header-detail">选择</span>
     </header>
-    <van-uploader v-model="fileList" multiple />
+    <van-uploader v-model="fileList" multiple style="float:left;margin-left:20px"/>
   </div>
 </template>
 <script>
 export default {
-  // name: "Photo",
+  name: "photo",
   data() {
     return {
       fileList: [
@@ -42,6 +42,10 @@ export default {
           resolve();
         }
       });
+    },
+
+    back(){
+      this.$router.push({path:'/upphoto'})
     }
   }
 };

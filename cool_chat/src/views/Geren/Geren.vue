@@ -44,7 +44,7 @@
       </section>
       <!-- 我的账户 -->
       <section class="wrap-account">
-        <div class="account-inner account">
+        <div class="account-inner account" @click="Account">
           <van-icon name="peer-pay" />
           <div>我的账户：{{item.myaccount}}</div>
         </div>
@@ -77,7 +77,7 @@
             <van-icon name="add-square" />
             <p>账号安全</p>
           </div>
-          <div @click="photo">
+          <div @click="upphoto">
             <van-icon name="photo" />
             <p>个人相册</p>
           </div>
@@ -95,7 +95,7 @@
             <van-icon name="question" />
             <p>常见问题</p>
           </div>
-          <div class="last">
+          <div class="last" @click="set">
             <van-icon name="setting" />
             <p>设置</p>
           </div>
@@ -141,8 +141,14 @@ export default {
       this.$router.push({path:'/Black'})
       // console.log(this.$router)
     },
-    photo(){
-      this.$router.push({path:'/Photo'})
+    upphoto(){
+      this.$router.push({path:'/Upphoto'})
+    },
+    set(){
+      this.$router.push({path:'/Set'})
+    },
+    Account(){
+      this.$router.push({path:'/Account'})
     }
   },
   mounted() {

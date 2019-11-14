@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <van-icon name="arrow-left" class="header-left" />
+      <van-icon name="arrow-left" class="header-left" @click="back"/>
       <span class="header-collect">我的账户</span>
       <span class="header-detail"></span>
     </header>
@@ -47,9 +47,14 @@
 </template>
 <script>
 export default {
-  name: "myaccount",
+  name: "Account",
   data() {
     return {};
+  },
+  methods:{
+    back(){
+      this.$router.push({path:'/Geren'})
+    }
   },
   mounted() {}
 };
@@ -66,6 +71,7 @@ height: 100%;
 #app{
     margin: 0 15px;
     position: relative;
+    text-align: left;
 }
 header {
   width: 100%;

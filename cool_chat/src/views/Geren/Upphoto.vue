@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <header>
-      <van-icon name="arrow-left" class="header-left" />
+      <van-icon name="arrow-left" class="header-left" @click="back"/>
       <span class="header-collect">我的相册</span>
       <span class="header-detail">选择</span>
     </header>
     <section>
-      <div class="up" @click='photo'>
+      <div class="up" @click="photo">
         <van-icon name="plus" />
         <p>上传照片</p>
       </div>
@@ -23,6 +23,10 @@ export default {
   methods:{
     photo(){
       this.$router.push('/photo');
+      console.log(111);
+    },
+    back(){
+      this.$router.push('/Geren');
     }
   }
 };
