@@ -27,14 +27,6 @@ const routes = [
   //   component: () => import(/* webpackChunkName: "about" */ '../views/Message.vue')
   // },
   {
-    path:'/phone_binding',
-    component:()=>import('../views/cjq/Phone_binding.vue')
-  },
-  {
-    path:'/code',
-    component:()=>import('../views/cjq/Code.vue')
-  },
-  {
     path: '/',
     redirect: '/home'
   },
@@ -42,6 +34,14 @@ const routes = [
     path: '/home',
     name: 'home',
     component: Home
+  },
+  {
+    path:'/phone_binding',
+    component:()=>import('../views/cjq/Phone_binding.vue')
+  },
+  {
+    path:'/code',
+    component:()=>import('../views/cjq/Code.vue')
   },
   {
     path: '/about',
