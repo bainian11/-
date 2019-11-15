@@ -9,11 +9,12 @@
     </div>
     <router-view/>
       <router-link to="/code"></router-link> 
+      <!-- <router-link to="/code"></router-link> 
       <router-link to="/phone_binding"></router-link>
       <router-link to="/set_up"></router-link>
       <router-link to="/visited"></router-link>
     <router-link to="/myincome"></router-link>
-    <router-link to="/my/myaccount"></router-link>
+    <router-link to="/my/myaccount"></router-link> -->
     <router-view />
   </div>
 </template>
@@ -35,6 +36,10 @@ export default {
 };
 </script>
 <style>
+html,body {
+        height: 100%;
+        width: 100%;
+    }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
