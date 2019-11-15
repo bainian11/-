@@ -87,7 +87,7 @@
           </div>
         </div>
         <div class="part">
-          <div>
+          <div @click="data">
             <van-icon name="manager" />
             <p>编辑资料</p>
           </div>
@@ -149,6 +149,9 @@ export default {
     },
     Account(){
       this.$router.push({path:'/Account'})
+    },
+    data(){
+      this.$router.push({path:'/Data'})
     }
   },
   mounted() {

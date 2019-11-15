@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header">
-      <van-icon name="search" class="search"/>
+      <van-icon name="search" @click="search" class="search"/>
       <p class="title">交友</p>
       <div class="look">只看异性</div>
     </div>
@@ -67,6 +67,11 @@ export default {
     return {
       activeName: "a",
     };
+  },
+  methods: {
+    search(){
+      this.$router.push({path:'/search'})
+    }
   }
 };
 </script>

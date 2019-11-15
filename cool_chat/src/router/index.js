@@ -10,6 +10,7 @@ import Setup from '../views/Geren/Set.vue'
 import Visited from '../views/Xiaoxi/Visited.vue'
 import photo from '../views/Geren/Photo.vue'
 import Account from '../views/Geren/Myaccount.vue'
+import Data from '../views/Geren/Personal data'
 
 Vue.use(VueRouter)
 
@@ -41,11 +42,37 @@ const routes = [
     component:()=>import('../views/cjq/Code.vue')
   },
   {
+    path: '/search',
+    name: 'search',
+    component: () => import('../views/Jiaoyou/search.vue')
+  },
+  {
+    path: '/personInfo',
+    name: 'personInfo',
+    component: () => import('../views/personInfo/personInfo.vue')
+  },
+  {
+    path: '/extractdetails',
+    name: 'extractdetails',
+    component: () => import('../views/extractDetails/Extractdetails.vue')
+  },
+  {
+    path: '/conversation',
+    name: 'conversation',
+    component: () => import('../views/Conversation/Conversation.vue')
+  },
+  {
     path:'/set_up',
     component:()=>import('../views/cjq/Set_up.vue')
   },
   {
-    path: '/',
+    
+      path: '/',
+      redirect: '/Jiaoyou'
+    
+  },
+  {
+    path: '/Jiaoyou',
     name: 'Jiaoyou',
     component: Jiaoyou
   },{
@@ -113,6 +140,11 @@ const routes = [
     path: '/Account',
     name: 'Account',
     component: Account
+  },
+  {
+    path: '/Data',
+    name: 'Data',
+    component:Data
   }
 
 

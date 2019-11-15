@@ -1,6 +1,6 @@
 <template>
   <van-tabbar v-model="active" active-color="#fe5367">
-    <van-tabbar-item class="my-icon" route to="/">
+    <van-tabbar-item class="my-icon" route to="/Jiaoyou">
       <van-icon name="like" class="my-icon" />
     </van-tabbar-item>
     <van-tabbar-item route to="Xiaoxi">

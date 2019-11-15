@@ -4,7 +4,7 @@
     
     <router-view/>
 
-  <Footer></Footer>
+  <Footer v-if="$store.state.homeNavSign"></Footer>
 
 
   </div>
@@ -23,6 +23,10 @@ export default {
 </script>
 <style>
 
+html,body {
+        height: 100%;
+        width: 100%;
+    }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
