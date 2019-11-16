@@ -8,7 +8,7 @@
       <van-tab title="收到">
         <ul class="giftsItem">
           <li v-for="gift of gifts" :key="gift.id">
-            <img src="../../public/imgs/huojian.jpg" alt="gift" class="giftimg" />
+            <img src="../../../public/imgs/huojian.jpg" alt="gift" class="giftimg" />
             <div class="giftname">{{gift.name}}</div>
             <div class="giftprice">{{gift.price}}</div>
           </li>
@@ -20,7 +20,7 @@
         <ul>
           <li v-for="reap of reaps" :key="reap.id" class="aaa">
             <div class="touxiang">
-              <img src="../../public/imgs/huojian.jpg" alt />
+              <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <div class="xingxi">
               <p class="nickname">{{reap.userid}}</p>
@@ -35,7 +35,7 @@
         <ul>
           <li v-for="reap of reaps" :key="reap.id" class="aaa">
             <div class="touxiang">
-              <img src="../../public/imgs/huojian.jpg" alt />
+              <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <div class="xingxi">
               <p class="nickname">{{reap.userid}}</p>

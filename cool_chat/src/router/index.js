@@ -37,29 +37,25 @@ const routes = [
   {
     path: '/vedio',
     name: 'vedio',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/Vedio.vue')
+    component: () => import('../views/Vedio.vue')
   },
-  
+
   {
-    path: '/complete',
-    name: 'complete',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/complete.vue')
-  },
-  {
-    path: '/fans',
-    name: 'fans',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/geren/fans.vue')
+    path: '/Complete',
+    name: 'Complete',
+    component: () => import('../views/Complete.vue')
   },
   {
-    path: '/gifts',
-    name: 'gifts',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/geren/gifts.vue')
+    path: '/Fans',
+    name: 'Fans',
+    component: () => import('../views/Geren/Fans.vue')
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
-  },
+    path: '/gift',
+    name: 'gift',
+    component: () => import('../views/Geren/Gift.vue')
+  }, 
+
   {
 
     path: '/',
@@ -145,11 +141,8 @@ const routes = [
   {
     path: '/Personal data',
     name: 'Personal data',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ '../views/Personal data.vue')
+      import('../views/Personal data.vue')
   },
 
   {
@@ -191,7 +184,7 @@ const routes = [
       import('../views/cjq/Visited.vue')
   },
 
- 
+
   {
     path: '/Xiaoxi',
     name: 'Xiaoxi',
