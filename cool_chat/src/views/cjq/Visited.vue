@@ -6,21 +6,26 @@
     </div>
     <van-tabs bind:click="onClick">
       <van-tab title="来访">
-        <div class="list">
+        <ul>
+          <li v-for="come of comes" :key="come.uid">
+             <div class="list">
           <div class="left">
             <span class="photo"></span>
           </div>
           <div class="right">
             <div class="right-top">
-              <div class="name">Edward</div>
+              <div class="name">{{come.name}}</div>
               <div class="sex">♂23</div>
             </div>
             <div class="right-bottom">
-              <span class="date">2019/08/12</span>
+              <span class="date">{{come.time}}</span>
               <span class="visit">来访</span>
             </div>
           </div>
         </div>
+          </li>
+        </ul>
+       
       </van-tab>
       <van-tab title="去访">
           <div class="list">
@@ -44,7 +49,22 @@
 </template>
 <script>
 export default {
-  name: "Visited"
+  name: "Visited",
+  data(){
+    const comes=[
+      {
+        uid:111,
+        name:1112112,
+        time:'11123r234'
+      }
+    ]
+    return{
+      comes
+    }
+  },
+  mounted(){
+    this.axios.post("",)
+  }
 };
 </script>
 

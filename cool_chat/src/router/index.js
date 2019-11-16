@@ -17,12 +17,12 @@ Vue.use(VueRouter)
 const routes = [
 
   {
-    path:'/phone_binding',
-    component:()=>import('../views/cjq/Phone_binding.vue')
+    path: '/phone_binding',
+    component: () => import('../views/cjq/Phone_binding.vue')
   },
   {
-    path:'/code',
-    component:()=>import('../views/cjq/Code.vue')
+    path: '/code',
+    component: () => import('../views/cjq/Code.vue')
   },
   {
     path: '/search',
@@ -30,65 +30,51 @@ const routes = [
     component: () => import('../views/Jiaoyou/search.vue')
   },
   {
-    path:'/set_up',
-    component:()=>import('../views/cjq/Set_up.vue')
+    path: '/set_up',
+    component: () => import('../views/cjq/Set_up.vue')
   },
-  // {
-  //   path: '/myincome',
-  //   name: 'myincome',
-  //   component: () => import('../views/shy/Myincome')
-  // },
+
   {
     path: '/vedio',
     name: 'vedio',
     component: () => import(/* webpackChunkName: "vedio" */ '../views/Vedio.vue')
   },
-  // {
-  //   path: '/Message',
-  //   name: 'Message',
-  //   component: () => import(/* webpackChunkName: "Message" */ '../views/Message.vue')
-  // },
+  
+  {
+    path: '/complete',
+    name: 'complete',
+    component: () => import(/* webpackChunkName: "vedio" */ '../views/complete.vue')
+  },
+  {
+    path: '/fans',
+    name: 'fans',
+    component: () => import(/* webpackChunkName: "vedio" */ '../views/geren/fans.vue')
+  },
+  {
+    path: '/gifts',
+    name: 'gifts',
+    component: () => import(/* webpackChunkName: "vedio" */ '../views/geren/gifts.vue')
+  },
   {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
   {
-    
-      path: '/',
-      redirect: '/Jiaoyou'
-    
+
+    path: '/',
+    redirect: '/Jiaoyou'
+
   },
   {
     path: '/Jiaoyou',
     name: 'Jiaoyou',
     component: Jiaoyou
-  },{
+  }, {
     path: '/Xiaoxi',
     name: 'Xiaoxi',
     component: Xiaoxi
   },
-  // {
-  //   path: '/account',
-  //   name: 'account',
-  //   component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue')
-  // },{
-  //   path: '/accountbind',
-  //   name: 'accountbind',
-  //   component: () => import(/* webpackChunkName: "accountbind" */ '../views/Accountbind.vue')
-  // },{
-  //   path: '/advice',
-  //   name: 'advice',
-  //   component: () => import(/* webpackChunkName: "advice" */ '../views/Advice.vue')
-  // },{
-  //   path: '/sex',
-  //   name: 'sex',
-  //   component: () => import(/* webpackChunkName: "sex" */ '../views/Sex.vue')
-  // },
-  // {path: '/my/:id',
-  //   name: 'my',
-  //   component: () => import('../views/shy/My')
-  // },
   {
     path: '/Geren',
     name: 'Geren',
@@ -115,10 +101,10 @@ const routes = [
     component: Visited
   },
   {
-    path:'/visited',
-    component:()=>import('../views/cjq/Visited.vue')
+    path: '/visited',
+    component: () => import('../views/cjq/Visited.vue')
   },
-  
+
   {
     path: '/Upphoto',
     name: 'Upphoto',
@@ -142,7 +128,6 @@ const routes = [
   {
     path: '/photo',
     name: 'photo',
-    // component: () => import('../views/Geren/Photo'),
     component: photo
   },
   {
@@ -153,120 +138,71 @@ const routes = [
   {
     path: '/Data',
     name: 'Data',
-    component:Data
+    component: Data
   },
 
 
-    {
-        path: '/Personal data',
-        name: 'Personal data',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/Personal data.vue')
-    },
+  {
+    path: '/Personal data',
+    name: 'Personal data',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import( /* webpackChunkName: "about" */ '../views/Personal data.vue')
+  },
 
-    {
-        path: '/phone_binding',
-        component: () =>
-            import ('../views/cjq/Phone_binding.vue')
-    },
-    {
-        path: '/code',
-        component: () =>
-            import ('../views/cjq/Code.vue')
-    },
+  {
+    path: '/phone_binding',
+    component: () =>
+      import('../views/cjq/Phone_binding.vue')
+  },
+  {
+    path: '/code',
+    component: () =>
+      import('../views/cjq/Code.vue')
+  },
+  {
+    path: '/personInfo',
+    name: 'personInfo',
+    component: () =>
+      import('../views/personInfo/personInfo.vue')
+  },
+  {
+    path: '/extractdetails',
+    name: 'extractdetails',
+    component: () =>
+      import('../views/extractDetails/Extractdetails.vue')
+  },
+  {
+    path: '/conversation',
+    name: 'conversation',
+    component: () =>
+      import('../views/Conversation/Conversation.vue')
+  },
+  {
+    path: '/set_up',
+    component: () =>
+      import('../views/cjq/Set_up.vue')
+  },
+  {
+    path: '/visited',
+    component: () =>
+      import('../views/cjq/Visited.vue')
+  },
 
-    // {
-    //     path: '/Message',
-    //     name: 'Message',
-    //     component: () =>
-    //         import ('../views/Message.vue')
-    // },
-    // {
-    //     path: '/search',
-    //     name: 'search',
-    //     component: () =>
-    //         import ('../views/search/search.vue')
-    // },
-    {
-        path: '/personInfo',
-        name: 'personInfo',
-        component: () =>
-            import ('../views/personInfo/personInfo.vue')
-    },
-    {
-        path: '/extractdetails',
-        name: 'extractdetails',
-        component: () =>
-            import ('../views/extractDetails/Extractdetails.vue')
-    },
-    {
-        path: '/conversation',
-        name: 'conversation',
-        component: () =>
-            import ('../views/Conversation/Conversation.vue')
-    },
-    {
-        path: '/set_up',
-        component: () =>
-            import ('../views/cjq/Set_up.vue')
-    },
-    // {
-    //     path: '/myincome',
-    //     name: 'myincome',
-    //     component: () =>
-    //         import ('../views/shy/Myincome')
-    // },
-    // {
-    //     path: '/my/:id',
-    //     name: 'my',
-    //     component: () =>
-    //         import ('../views/shy/My')
-    // },
-    // {
-    //     path: '/myaccount/:money',
-    //     name: 'myaccount',
-    //     component: () =>
-    //         import ('../views/shy/Myaccount')
-    // },
-    {
-        path: '/visited',
-        component: () =>
-            import ('../views/cjq/Visited.vue')
-    },
+ 
+  {
+    path: '/Xiaoxi',
+    name: 'Xiaoxi',
+    component: Xiaoxi
+  },
 
-    {
-        path: '/Xiaoxi',
-        name: 'Xiaoxi',
-        component: Xiaoxi
-    },
-    // {
-    //     path: '/Inform',
-    //     name: 'Inform',
-    //     component: () =>
-    //         import ( /* webpackChunkName: "about" */ '../views/Inform.vue')
-    // },
-    // {
-    //     path: '/upphoto',
-    //     name: 'upphoto',
-    //     component: () =>
-    //         import ('../views/shy/Upphoto'),
-    //     // children:[]
-    // },
-    // {
-    //     path: '/photo',
-    //     name: 'photo',
-    //     component: () =>
-    //         import ('../views/shy/Photo'),
-
-    // }
 
 ]
 
 const router = new VueRouter({
-    routes
+  routes
 })
 
 export default router
