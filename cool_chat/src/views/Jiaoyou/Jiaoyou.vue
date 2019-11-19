@@ -1,21 +1,30 @@
 <template>
   <div>
     <div class="header">
-      <van-icon name="search" @click="search" class="search"/>
+      <van-icon name="search" @click="search" class="search" />
       <p class="title">交友</p>
       <div class="look">只看异性</div>
     </div>
     <div id="nav">
-      <van-tabs v-model="activeName" class="tab" swipeable sticky animated :offset-top=40 line-width=30>
+      <van-tabs
+        v-model="activeName"
+        class="tab"
+        swipeable
+        sticky
+        animated
+        :offset-top="40"
+        line-width="30"
+      >
         <van-tab title="红人" name="a">
           <div class="main-content">
             <!-- <div class="pic"></div> -->
-            <img style="display:block" src="../../assets/bg-1.jpg" alt="">
+            <img style="display:block" src="../../assets/bg-1.jpg" alt />
             <li>
-              <img src="../../assets/01.jpg" alt="">
+              <img src="../../assets/01.jpg" alt />
               <div class="detail">
-                <p class="name">Jessy</p><div class="sex">26</div>
-                <br>
+                <p class="name">Jessy</p>
+                <div class="sex">26</div>
+                <br />
                 <p class="derection">我风的风阿文戈二万个呃俄给呃符文呃风个噶饿呃...</p>
               </div>
             </li>
@@ -31,7 +40,7 @@
 
         <van-tab title="活跃" name="b">
           <div class="main-content">
-            <img style="display:block"  src="../../assets/bg-1.jpg" alt="">
+            <img style="display:block" src="../../assets/bg-1.jpg" alt />
             <li>1</li>
             <li>2</li>
             <li>3</li>
@@ -45,7 +54,7 @@
 
         <van-tab title="新面孔" name="c">
           <div class="main-content">
-            <img style="display:block"  src="../../assets/bg-1.jpg" alt="">
+            <img style="display:block" src="../../assets/bg-1.jpg" alt />
             <li>1</li>
             <li>2</li>
             <li>3</li>
@@ -65,12 +74,12 @@
 export default {
   data() {
     return {
-      activeName: "a",
+      activeName: "a"
     };
   },
   methods: {
-    search(){
-      this.$router.push({path:'/search'})
+    search() {
+      this.$router.push({ path: "/search" });
     }
   }
 };
@@ -146,16 +155,16 @@ export default {
 }
 
 .main-content img {
-    height: 100px;
+  height: 100px;
 }
 
 .main-content li {
-    width: 50%;
-    height: 240px;
-    list-style: none;
-    float: left;
-    margin-top: 0;
-    position: relative;
+  width: 50%;
+  height: 240px;
+  list-style: none;
+  float: left;
+  margin-top: 0;
+  position: relative;
 }
 
 .main-content li img {
@@ -164,11 +173,9 @@ export default {
   display: block;
 }
 
-
 .tab {
   width: 100%;
   margin-top: 40px;
-
 }
 
 .pic {
@@ -200,12 +207,12 @@ export default {
 .sex {
   width: 32px;
   height: 15px;
-  background: #fe5367; 
+  background: #fe5367;
   float: left;
   margin-left: 6px;
   border-radius: 3px;
   color: white;
-  font-size: 10px; 
+  font-size: 10px;
   line-height: 16px;
 }
 

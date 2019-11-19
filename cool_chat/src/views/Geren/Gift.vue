@@ -7,10 +7,10 @@
       <!-- 分页1 -->
       <van-tab title="收到">
         <ul class="giftsItem">
-          <li v-for="gift of gifts" :key="gift.id">
+          <li v-for="(getGiftAmount,index) of getGiftAmountList" :key="index">
             <img src="../../../public/imgs/huojian.jpg" alt="gift" class="giftimg" />
-            <div class="giftname">{{gift.name}}</div>
-            <div class="giftprice">{{gift.price}}</div>
+            <div class="giftname">{{getGiftAmount.giftAmountName}}</div>
+            <div class="giftprice">{{getGiftAmount.giftAmountNum}}</div>
           </li>
         </ul>
         <section>
@@ -18,30 +18,30 @@
           <p class="p2">视频、文字聊天、别人访问你的主页时、都有机会获得</p>
         </section>
         <ul>
-          <li v-for="reap of reaps" :key="reap.id" class="aaa">
+          <li v-for="(getGift,index) of getGiftList" :key="index" class="aaa">
             <div class="touxiang">
               <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <div class="xingxi">
-              <p class="nickname">{{reap.userid}}</p>
-              <p class="giftid">赠送 {{reap.giftname}}</p>
+              <p class="nickname">{{getGift.nickName}}</p>
+              <p class="giftid">赠送 {{getGift.giftNum}}个{{getGift.giftName}}</p>
             </div>
-            <div class="shijian">{{reap.sendtime}}</div>
+            <div class="shijian">{{getGift.giftTime}}</div>
           </li>
         </ul>
       </van-tab>
       <!-- 分页2 -->
       <van-tab title="送出">
         <ul>
-          <li v-for="reap of reaps" :key="reap.id" class="aaa">
+          <li v-for="(sendGift,index) of sendGiftList" :key="index" class="aaa">
             <div class="touxiang">
               <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <div class="xingxi">
-              <p class="nickname">{{reap.userid}}</p>
-              <p class="giftid">赠送 {{reap.giftname}}</p>
+              <p class="nickname">{{sendGift.nickName}}</p>
+              <p class="giftid">赠送 {{sendGift.giftName}}</p>
             </div>
-            <div class="shijian">{{reap.sendtime}}</div>
+            <div class="shijian">{{sendGift.giftTime}}</div>
           </li>
         </ul>
       </van-tab>
@@ -52,86 +52,70 @@
 <script>
 export default {
   name: "gift",
-  data() {
-    const gifts = [
-      {
-        id: 1,
-        url: "../assets/huojian.jpg",
-        name: "火箭",
-        price: 500
-      },
-      {
-        id: 2,
-        url: "../assets/huojian.jpg",
-        name: "飞机",
-        price: 100
-      },
-      {
-        id: 3,
-        url: "../assets/huojian.jpg",
-        name: "办卡",
-        price: 6
-      },
-      {
-        id: 4,
-        url: "../assets/huojian.jpg",
+  mounted() {
+    // 收到
+    this.axios
+      .get("/gift", {
+        params: {
+          userId: 31231414
+        }
+      })
+      .then(res => {
+        this.sendGiftList = res.data.data;
+        // console.log(res.data.data);
+        // console.log(this.sendGiftList);
+      });
 
-        name: "荧光棒",
-        price: 1
-      },
+    // 送出
+    this.axios
+      .get("/getGift", {
+        params: {
+          userId: 31231414
+        }
+      })
+      .then(res => {
+        // this.sendGiftList = res.data.data;
+        console.log(res.data.data[0]);
+        console.log(res.data.data[1]);
+        this.getGiftList = res.data.data[0];
+        this.getGiftAmountList = res.data.data[1];
+
+        // console.log(this.sendGiftList);
+      });
+  },
+  data() {
+    // 礼物类型
+    const getGiftAmountList = [
       {
-        id: 5,
-        url: 111111,
-        name: "火箭",
-        price: 500
-      },
-      {
-        id: 6,
-        url: 111111,
-        name: "飞机",
-        price: 100
-      },
-      {
-        id: 7,
-        url: 111111,
-        name: "办卡",
-        price: 6
-      },
-      {
-        id: 8,
-        url: 111111,
-        name: "荧光棒",
-        price: 1
+        giftAmountName: "111",
+        giftAmountNum: 111,
+        giftAmountImage: "111"
       }
     ];
-    const reaps = [
+    const getGiftList = [
       {
-        id: 1,
-        url: 111111,
-        userid: "MOMOMO",
-        giftname: "火箭",
-        sendtime: "2019/8/12"
-      },
+        nickName: "1111",
+        headImage: "111",
+        giftName: "111",
+        giftTime: "111",
+        giftNum: 1
+      }
+    ];
+    const sendGiftList = [
       {
-        id: 2,
-        url: 111111,
-        userid: "momomo",
-        giftname: "火箭",
-        sendtime: "2019/8/12"
-      },
-      {
-        id: 3,
-        url: 111111,
-        userid: "momomo",
-        giftname: "火箭",
-        sendtime: "2019/8/12"
+        nickName: "1111",
+        headImage: "111",
+        giftName: "111",
+        giftTime: "111",
+        giftNum: 1
       }
     ];
 
     return {
       active: 0,
-      gifts,
-      reaps
+      getGiftAmountList,
+      sendGiftList,
+      getGiftList
     };
   },
   components: {}

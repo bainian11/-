@@ -7,64 +7,72 @@
       <!-- 分页1 -->
       <van-tab title="已关注">
         <ul>
-          <li v-for="focus of focuslist" :key="focus.id" class="aaa">
+          <li v-for="(user,index) of userListt" :key="index" class="aaa">
             <div class="touxiang">
               <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <!-- 男女区分 -->
-            <div class="nickname" v-if="focus.sex=='男'">
-              {{focus.nickname}}
-              <span class="man">♂ {{focus.age}}</span>
+            <div class="nickname" v-if="user.sex=='1'">
+              {{user.nickName}}
+              <span class="man">♂ {{user.age}}</span>
               <div class="ygz">
                 <div class="gou">√</div>
-                <span class="txt">已关注</span>
+                <span class="txt" @click="iffocus">已关注</span>
               </div>
             </div>
             <div class="nickname" v-else>
-              {{focus.nickname}}
-              <span class="woman">♀ {{focus.age}}</span>
+              {{user.nickName}}
+              <span class="woman">♀ {{user.age}}</span>
               <div class="ygz">
                 <div class="gou">√</div>
-                <span class="txt">已关注</span>
+                <span class="txt" @click="iffocus">已关注</span>
               </div>
             </div>
             <!--  -->
-            <div class="shijian">{{focus.time}} 关注</div>
+            <div class="shijian">
+              {{user.birthday}}
+              关注
+            </div>
           </li>
         </ul>
       </van-tab>
       <!-- 分页2 -->
-      <van-tab title="粉丝"><ul>
-          <li v-for="focus of focuslist" :key="focus.id" class="aaa">
+      <van-tab title="粉丝">
+        <ul>
+          <li v-for="(user,index) of userList" :key="index" class="aaa">
             <div class="touxiang">
               <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <!-- 男女区分 -->
-            <div class="nickname" v-if="focus.sex=='男'">
-              {{focus.nickname}}
-              <span class="man">♂ {{focus.age}}</span>
-              <div class="fans">
+            <div class="nickname" v-if="user.sex=='1'">
+              {{user.nickName}}
+              <span class="man">♂ {{user.age}}</span>
+              <!-- <div class="fans">
                 <div class="gou">√</div>
                 <span class="txt">已关注</span>
-              </div>
+              </div>-->
             </div>
             <div class="nickname" v-else>
-              {{focus.nickname}}
-              <span class="woman">♀ {{focus.age}}</span>
+              {{user.nickName}}
+              <span class="woman">♀ {{user.age}}</span>
               <!-- 是否关注 -->
-              <div class="fans" v-if="focus.guanzhu"> 
+              <!-- <div class="fans" v-if="focus.guanzhu">
                 <div class="gou">√</div>
                 <span class="txt">已关注</span>
               </div>
-              <div class="fans" v-else> 
+              <div class="fans" v-else>
                 <div class="gou wgz">+</div>
                 <span class="txt bbb">关注</span>
-              </div>
+              </div>-->
             </div>
             <!--  -->
-            <div class="shijian">{{focus.time}} 关注</div>
+            <div class="shijian">
+              <!-- {{focus.time}} -->
+              关注
+            </div>
           </li>
-        </ul></van-tab>
+        </ul>
+      </van-tab>
     </van-tabs>
   </div>
 </template>
@@ -73,31 +81,83 @@
 export default {
   name: "fans",
   data() {
-    const focuslist = [
+    const userListt = [
       {
-        id: 1,
-        url: "./",
-        nickname: "吴晨懋天天迟到",
-        sex: "男",
-        time: "2019/8/12",
-        age: 22,
-        guanzhu:true
-      },
+        userId: 11111,
+        nickName: "1111",
+        headImage: "111",
+        age: 11,
+        sex: 1
+      }
+    ];
+    const userList = [
       {
-        id: 2,
-        url: "./",
-        nickname: "hahahahah",
-        sex: "女",
-        time: "2019/8/12",
-        age: 18,
-        guanzhu:false
-
+        userId: 11111,
+        nickName: "1111",
+        headImage: "111",
+        age: 11,
+        sex: 1
       }
     ];
     return {
       active: 2,
-      focuslist
+      userListt,
+      userList
     };
+  },
+  mounted() {
+    this.axios
+      .get("/fans", {
+        params: {
+          userId: 12345678
+        }
+      })
+      .then(res => {
+        // this.sendGiftList = res.data.data;
+        // console.log(res.data.data);
+        this.userList = res.data.data;
+        // console.log(this.sendGiftList);
+      });
+    //
+    this.axios
+      .get("/focus", {
+        params: {
+          userId: 12345678
+        }
+      })
+      .then(res => {
+        // this.sendGiftList = res.data.data;
+        console.log(res.data.data);
+        this.userListt = res.data.data;
+        // console.log(this.sendGiftList);
+      });
+  },
+  methods: {
+    iffocus() {
+      this.axios
+        .post("/iffocus", {
+          fansId: 12345678,
+          caredId: 12345656
+        })
+        .then(res => {
+          // this.sendGiftList = res.data.data;
+          console.log(res.data);
+          // this.userList = res.data.data;
+          // console.log(this.sendGiftList);
+          this.axios
+            .get("/focus", {
+              params: {
+                userId: 12345678
+              }
+            })
+            .then(res => {
+              // this.sendGiftList = res.data.data;
+              console.log(res.data.data);
+              this.userListt = res.data.data;
+              // console.log(this.sendGiftList);
+            });
+        });
+    }
   }
 };
 </script>
@@ -184,7 +244,7 @@ li {
   width: 78px;
   height: 28px;
   float: right;
-  background: linear-gradient(to right,#fe4b68,#ff8c5f);
+  background: linear-gradient(to right, #fe4b68, #ff8c5f);
   border-radius: 14px;
   position: relative;
   font-size: 13px;
@@ -203,16 +263,16 @@ li {
 }
 
 .txt {
-color: white;
-position: absolute;
-right: 10px;
-top: 4px;
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 4px;
 }
 
-.fans .wgz{
-    margin-left: 8px
+.fans .wgz {
+  margin-left: 8px;
 }
-.fans .bbb{
-   right: 13px;
+.fans .bbb {
+  right: 13px;
 }
 </style>
