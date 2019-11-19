@@ -3,6 +3,7 @@
     <div class="title"></div>
     <h3>完善资料</h3>
     <ul>
+      <!-- 头像 -->
       <li>
         <span class="hint">上传头像</span>
         <div class="touxiang">
@@ -15,18 +16,21 @@
           />
         </div>
       </li>
+      <!-- 昵称 -->
       <li>
         <span class="hint">昵称</span>
         <van-icon name="arrow" size="8px" color="#e6e6e6" class="arrow" />
-        <input type="text" class="nickname" maxlength="8" />
+        <input type="text" class="nickname" maxlength="8" v-model="nickname" />
       </li>
+      <!-- 出生日期 -->
       <li>
         <span class="hint">出生日期</span>
         <van-icon name="arrow" size="8px" color="#e6e6e6" class="arrow" @click="timeisshow" />
-        <b v-if="choosed" @click="timeisshow">{{born.year}}-{{born.month}}-{{born.day}}</b>
+        <b v-if="choosed" @click="timeisshow">{{birthday}}</b>
       </li>
     </ul>
-    <van-button type="primary" size="large" color="#999999" class="button">完成</van-button>
+    <van-button type="primary" size="large" color="#999999" class="button" @click="complete">完成</van-button>
+    <!-- 日期选择框 -->
     <van-datetime-picker
       v-model="currentDate"
       type="date"
@@ -40,8 +44,7 @@
 </template>
 
 <script>
-
-
+import Vue from "vue";
 export default {
   name: "Complete",
   components: {},
@@ -62,18 +65,36 @@ export default {
     };
     const born = {};
     return {
+      fileList: [], //头像文件数组
+
+      //日期相关
       currentDate: new Date(),
       minDate: new Date(1948, 12, 1),
       choosetime: false,
       choosed: false,
-      date,
-      born,
-      fileList: []
+
+      date, //月份简写对象
+      born, //选择之后的出生日期对象
+
+      // 需要发送的数据
+      phone: "111",
+      sex: "0",
+      head: "", //头像返回的字符串
+      nickname: ""
     };
   },
+<<<<<<< HEAD
   created(){
     console.log(this.$route.query.sureSex);
   },
+=======
+  computed: {
+    birthday: function() {
+      return this.born.year + "-" + this.born.month + "-" + this.born.day;
+    }
+  },
+  mounted() {},
+>>>>>>> c9241e98faca18ee58c897170c9a49b2bdf3f9f3
   methods: {
     // 箭头显示日期界面
     timeisshow() {
@@ -87,11 +108,11 @@ export default {
       const day = val[2];
       const year = val[3];
       const month = this.date[val[1]];
-      console.log(year, month, day);
-      this.born.year = year;
-      this.born.month = month;
-      this.born.day = day;
-
+      // console.log(year, month, day);
+      Vue.set(this.born, "year", year);
+      Vue.set(this.born, "month", month);
+      Vue.set(this.born, "day", day);
+      console.log(this.birthday);
       this.choosed = true;
     },
     // 日期界面取消方法
@@ -110,17 +131,36 @@ export default {
       formdata1.append("img", file, file.name);
 
       //this.axios 是因为在main.js写在vue实例里
-      console.log(formdata1)
+
       this.axiosAjax
-        .post("/wanshan", formdata1)
+        .post("/touxiang", formdata1)
         .then(res => {
           //这里的url为后端接口
           console.log(res.data);
+          this.head = res.data.data;
+          console.log(this.head);
           //res 为接口返回值
         })
         .catch(() => {});
+    },
+    complete() {
+      this.axios
+        .post("/complete", {
+          phone: this.phone,
+          sex: this.sex,
+          headImage: this.head,
+          nickName: this.nickName,
+          birthday: this.birthday
+        })
+        .then(res => {
+          console.log(res.data.data.userId);
+          this.$store.commit("sendUserId", res.data.data.userId);
+        });
+      this.$router.push({
+        path: "/jiaoyou",
+        query: {}
+      });
     }
-  
   }
 };
 </script>
@@ -137,7 +177,12 @@ export default {
   float: left;
   margin-top: 26px;
 }
-
+.touxiang {
+  /* float: right; */
+  position: absolute;
+  top: 115px;
+  right: 22px;
+}
 .nickname {
   float: right;
   height: 30px;

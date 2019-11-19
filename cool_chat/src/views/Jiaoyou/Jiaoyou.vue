@@ -81,11 +81,14 @@ export default {
   methods: {
     search() {
       this.$router.push({ path: "/search" });
+<<<<<<< HEAD
     },
     login() {
       if (!window.Storage) {
         this.$router.push("/login");
       }
+=======
+>>>>>>> c9241e98faca18ee58c897170c9a49b2bdf3f9f3
     }
   },
   beforeCreate() {
