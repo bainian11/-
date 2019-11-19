@@ -81,14 +81,11 @@ export default {
   methods: {
     search() {
       this.$router.push({ path: "/search" });
-<<<<<<< HEAD
     },
     login() {
       if (!window.Storage) {
         this.$router.push("/login");
       }
-=======
->>>>>>> c9241e98faca18ee58c897170c9a49b2bdf3f9f3
     }
   },
   beforeCreate() {
@@ -102,14 +99,14 @@ export default {
     //     next();
     //   }
     // });
-    if(!localStorage.getItem("phone")){
+    if (!localStorage.getItem("phone")) {
       console.log(1);
       console.log(localStorage.getItem("phone"));
-      this.$router.push('/login');
-    }else{
-      this.$router.push('/Jiaoyou');
+      this.$router.push("/login");
+    } else {
+      this.$router.push("/Jiaoyou");
       console.log(2);
-      console.log(localStorage.getItem("phone"))
+      console.log(localStorage.getItem("phone"));
     }
   },
   mounted() {

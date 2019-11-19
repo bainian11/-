@@ -83,18 +83,12 @@ export default {
       nickname: ""
     };
   },
-<<<<<<< HEAD
-  created(){
-    console.log(this.$route.query.sureSex);
-  },
-=======
   computed: {
     birthday: function() {
       return this.born.year + "-" + this.born.month + "-" + this.born.day;
     }
   },
   mounted() {},
->>>>>>> c9241e98faca18ee58c897170c9a49b2bdf3f9f3
   methods: {
     // 箭头显示日期界面
     timeisshow() {
