@@ -1,7 +1,7 @@
 <template>
   <div class="sex">
     <header>
-      <van-icon name="arrow-left" class="left" />
+      <van-icon name="arrow-left" class="left" @click="yzm"/>
     </header>
     <h1>性别选择</h1>
     <section>
@@ -11,14 +11,10 @@
             <img @click="change(item)" :src="item.src" ref="changesrc" />
             <span>{{item.sex}}</span>
           </p>
-          <!-- <p>
-            <img @click="change(event)" :src="src111[1].srcm" alt ref="changesrc"/>
-            <span>男士</span>
-          </p>-->
         </div>
-        <p>
-          <button class="btn">登录</button>
-        </p>
+          <p>
+            <button class="btn" style="color:#fff" @click="wanshan">下一步</button>
+          </p>
       </div>
     </section>
   </div>
@@ -29,9 +25,10 @@ export default {
   data() {
     return {
       src111: [
-        { id: 111, src: "./img/women.png", sex: "女" },
-        { id: 222, src: "./img/man.png", sex: "男" }
-      ]
+        { id: 0, src: "./img/women.png", sex: "女" },
+        { id: 1, src: "./img/man.png", sex: "男" }
+      ],
+      sureSex:undefined
     };
   },
   methods: {
@@ -39,17 +36,25 @@ export default {
       let that = this;
       console.log(item.id);
       // console.log(that.$refs.changesrc.src);
-      if (item.id === 111) {
+      if (item.id === 0) {
         that.src111 = [
-          { id:111,src: "./img/nwomen.png", sex: "女" },
-          { id:222,src: "./img/man.png", sex: "男" }
-        ]
-      }else if(item.id === 222){
+          { id: 0, src: "./img/nwomen.png", sex: "女" },
+          { id: 1, src: "./img/man.png", sex: "男" }
+        ];
+        that.sureSex=0;
+      } else if (item.id === 1) {
         that.src111 = [
-          { id:111,src: "./img/women.png", sex: "女" },
-          { id:222,src: "./img/nman.png", sex: "男" }
-        ]
+          { id: 0, src: "./img/women.png", sex: "女" },
+          { id: 1, src: "./img/nman.png", sex: "男" }
+        ];
+        that.sureSex=1;
       }
+    },
+    yzm(){
+      this.$router.push('/login')
+    },
+    wanshan() {
+      this.$router.push({path:'/complete/',query:this.sureSex})
     }
   }
 };

@@ -5,17 +5,16 @@
       <p class="head-b">黑名单</p>
     </div>
     <div class="main">
-      <li>
-        <div class="head-x"></div>
-        <p class="name">萧山吴彦祖</p><div class="sex-b">26</div><br>
-        <p class="date">2019/11/11</p>
-        <div class="delete">移除</div>
-      </li>
-      <li>
-        <div class="head-x"></div>
-        <p class="name">萧山吴彦祖</p><div class="sex-b">26</div><br>
-        <p class="date">2019/11/11</p>
-        <div class="delete">移除</div>
+      <li v-for=" item of black" :key="item.userId">
+        <div class="head-x">
+          <img :src="item.headImage" alt />
+        </div>
+        <p class="name">{{item.nickName}}</p>
+        <div class="sex girl" v-if="item.sex===0">♀{{ item.age}}</div>
+        <div class="sex boy" v-else>♂{{ item.age}}</div>
+        <br />
+        <!-- <div class="sex-b">{{item.sex }}{{item.age}}</div><br> -->
+        <div class="delete" @click="del(item.userId)">移除</div>
       </li>
     </div>
   </div>
@@ -24,10 +23,29 @@
 <script>
 export default {
   name: "Black",
+  data() {
+    return {
+      black: []
+    };
+  },
   methods: {
     back() {
       this.$router.push({ path: "/Geren" });
+    },
+    del(id) {
+      console.log(id);
+      // this.axios.post("/blacklist/white");
+      let data = { defriendedId: 13, defriendId: 12 };
+      this.axios.post("/blacklist/white", data).then(res => {
+        console.log(111);
+      });
     }
+  },
+  mounted() {
+    let id = 16;
+    this.axios.get("/blacklist/blacklist/" + id).then(result => {
+      this.black = result.data.data;
+    });
   }
 };
 </script>
@@ -39,6 +57,26 @@ export default {
   font-size: 17px;
   line-height: 39px;
   font-weight: 500;
+}
+
+.sex {
+  margin-top: 16px;
+  width: 32px;
+  height: 18px;
+  display: inline-block;
+  float: left;
+  margin-left: 6px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 8px;
+  line-height: 18px;
+  text-align: center;
+}
+.girl {
+  background: #ff5277;
+}
+.boy {
+  background: #2b6cdb;
 }
 .icon-b {
   display: inline-block;
@@ -82,18 +120,7 @@ export default {
   font-size: 15px;
   margin-left: 15px;
 }
-.sex-b {
-  width: 32px;
-  height: 15px;
-  background: #2b6cdb; 
-  float: left;
-  margin-left: 6px;
-  border-radius: 3px;
-  color: white;
-  font-size: 10px; 
-  line-height: 15px;
-  margin-top: 16px;
-}
+
 .date {
   float: left;
   font-size: 11px;

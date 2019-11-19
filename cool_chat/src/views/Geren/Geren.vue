@@ -1,29 +1,29 @@
 <template>
   <div id="app">
-    <div id="wrap" v-for="item of information" :key="item.id">
+    <div id="wrap">
       <!-- 认证 -->
-      <div v-if="item.prove" class="config">已认证</div>
+      <div v-if="information.attestCode==1" class="config">已认证</div>
       <div v-else class="selfconfig">本人认证</div>
       <!-- 头像 -->
       <header>
-        {{item.name}}
-        <div class="sex girl" v-if="item.sex==='女'">♀{{ item.age}}</div>
-        <div class="sex boy" v-else>♂{{ item.age}}</div>
-        <div class="myid">ID:{{item.ID}}</div>
-        <img :src="item.pic" alt />
-        <p class="sign">签名：{{item.sign}}</p>
+        {{information.nickname}}
+        <div class="sex girl" v-if="information.sex==='女'">♀{{ information.age}}</div>
+        <div class="sex boy" v-else>♂{{ information.age}}</div>
+        <div class="myid">ID:{{information.userId}}</div>
+        <img :src="information.pic" alt />
+        <p class="sign">签名：{{information.signature}}</p>
         <ul>
           <li>
             <span class="follow">关注</span>
-            {{item.attention}}
+            {{information.caresNum}}
           </li>
           <li>
             <span class="follow">粉丝</span>
-            {{item.fans}}
+            {{information.fansNum}}
           </li>
           <li>
             <span class="follow">访问</span>
-            {{item.visite}}
+            {{information.visitNum}}
           </li>
         </ul>
       </header>
@@ -46,11 +46,11 @@
       <section class="wrap-account">
         <div class="account-inner account" @click="Account">
           <van-icon name="peer-pay" />
-          <div>我的账户：{{item.myaccount}}</div>
+          <div>我的账户：{{information.gold}}</div>
         </div>
         <div class="account-inner coin">
           <van-icon name="points" />
-          <div>我的金币：{{item.mycoin}}</div>
+          <div>我的金币：{{information.gold}}</div>
         </div>
       </section>
       <!-- 礼物 -->
@@ -62,11 +62,11 @@
         <div class="getgift">
           <div class="gift-inner receive">
             <van-icon name="ascending" class="font-gift" />
-            <h6>收到的礼物：{{item.gift}}</h6>
+            <h6>收到的礼物：{{information.sendGift}}</h6>
           </div>
           <div class="gift-inner sended">
             <van-icon name="descending" class="font-gift" />
-            <h6>送出的礼物：{{item.send}}</h6>
+            <h6>送出的礼物：{{information.getGift}}</h6>
           </div>
         </div>
       </section>
@@ -113,21 +113,21 @@ export default {
       information: [
         {
           id: 1,
-          prove: false,
-          name: "momomo",
-          ID: 2589484,
+          attestCode: 0,
+          nickname: "momomo",
+          userId: 2589484,
           sex: "女",
           age: 26,
-          sign: "大碗宽面哈哈哈哈哈哈哈哈哈哈哈",
+          signature: "大碗宽面哈哈哈哈哈哈哈哈哈哈哈",
           pic:
             "http://pic4.zhimg.com/50/v2-a763daa0fd9dd56c6d4b6412cac68211_hd.jpg",
-          attention: 26,
-          fans: 26,
-          visite: 26,
+          caresNum: 26,
+          fansNum: 26,
+          visitNum: 26,
           myaccount: 22,
-          mycoin: 23,
-          gift: 26,
-          send: 26
+          gold: 23,
+          sendGift: 26,
+          getGift: 26
         }
       ],
       account: [{ id: 1 }]
@@ -137,27 +137,33 @@ export default {
     change(ev) {
       // console.log(ev.targrt.checked);
     },
-    Black(){
-      this.$router.push({path:'/Black'})
+    Black() {
+      this.$router.push({ path: "/Black" });
       // console.log(this.$router)
     },
-    upphoto(){
-      this.$router.push({path:'/Upphoto'})
+    upphoto() {
+      this.$router.push({ path: "/Upphoto" });
     },
-    set(){
-      this.$router.push({path:'/Set'})
+    set() {
+      this.$router.push({ path: "/Set" });
     },
-    Account(){
-      this.$router.push({path:'/Account'})
+    Account() {
+      this.$router.push({ path: "/Account" });
     },
-    data(){
-      this.$router.push({path:'/Data'})
+    data() {
+      this.$router.push({ path: "/Data" });
     }
   },
-  mounted() {
-    console.log(this.$route);
-    console.log(111);
-    //   $route.params.id
+  created() {
+    // console.log(this.$route);
+    let _this =this;
+    var uid = 31231414;
+    this.axios.get("/mine",{
+      params:{userId:31231414}
+    }).then(result=>{
+      console.log(result.data);
+      _this.information=result.data.data;
+    });
   }
 };
 </script>
@@ -353,10 +359,10 @@ footer {
 .van-icon-question {
   color: #fa3e60;
 }
-footer .part>div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+footer .part > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 footer .van-icon {
   font-size: 30px;

@@ -71,6 +71,9 @@ export default {
       fileList: []
     };
   },
+  created(){
+    console.log(this.$route.query.sureSex);
+  },
   methods: {
     // 箭头显示日期界面
     timeisshow() {

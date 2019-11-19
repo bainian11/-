@@ -9,7 +9,7 @@
         <ul>
           <li v-for="focus of focuslist" :key="focus.id" class="aaa">
             <div class="touxiang">
-              <img src="../../public/imgs/huojian.jpg" alt />
+              <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <!-- 男女区分 -->
             <div class="nickname" v-if="focus.sex=='男'">
@@ -37,7 +37,7 @@
       <van-tab title="粉丝"><ul>
           <li v-for="focus of focuslist" :key="focus.id" class="aaa">
             <div class="touxiang">
-              <img src="../../public/imgs/huojian.jpg" alt />
+              <img src="../../../public/imgs/huojian.jpg" alt />
             </div>
             <!-- 男女区分 -->
             <div class="nickname" v-if="focus.sex=='男'">

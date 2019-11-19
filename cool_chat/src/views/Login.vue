@@ -21,7 +21,9 @@
       <span @click="createCode()">换一张</span>
       <b>{{code}}</b>
     </p>
-    <p><button class="btn">登录</button></p>
+    <p>
+      <button class="btn" @click="jiaoyou">登录/注册</button>
+    </p>
     <van-number-keyboard v-model="value" :show="show" :maxlength="11" @blur="show = false" />
   </div>
 </template>
@@ -38,20 +40,78 @@ export default {
     createCode() {
       let code = "";
       let codeLength = 4;
-      let random = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',   
-               'S','T','U','V','W','X','Y','Z'];
+      let random = [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ];
       for (let i = 0; i < codeLength; i++) {
         let index = Math.floor(Math.random() * 36);
         code += random[index];
         this.code = code;
       }
+    },
+    jiaoyou() {
+      this.axios
+        .get("/register", {
+          params: {
+            phone: this.value
+          }
+        })
+        .then(result => {
+          if (result.data) {
+            // 存在
+            let storage = window.localStorage;
+            // setitem()参数1：key，参数2：value
+            storage.setItem("phone", this.value);
+            this.$router.push({ path: "/Jiaoyou", query: result.data.userId });
+            console.log(result.data);
+          } else {
+            //不存在
+            this.$router.push({ path: "/sex", query: result.data.phone });
+            console.log(result.data);
+          }
+        });
     }
   }
 };
 </script>
 <style scoped>
 header {
-  height:42px;
+  height: 42px;
   /* width: 100%; */
   padding-left: 15px;
 }
@@ -102,27 +162,27 @@ input {
   background: #cccccc;
   font-size: 14px;
 }
-.n-yzm{
+.n-yzm {
   display: flex;
   margin-top: 60px;
 }
-.n-yzm span,b{
+.n-yzm span,
+b {
   font-size: 18px;
   flex: 1;
   line-height: 49px;
   border-radius: 4px;
 }
-.n-yzm b{
-  background: lightgreen;
+.n-yzm b {
+  background: yellow;
   margin-left: 15px;
 }
-.btn{
+.btn {
   width: 100%;
-  background: lightskyblue;
-  border:0;
+  color: #fff;
+  background: linear-gradient(to right, #fe4c68, #ff8a5f);
+  border: 0;
   height: 49px;
   border-radius: 5px;
 }
- 
-
 </style>

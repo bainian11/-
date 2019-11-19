@@ -17,6 +17,12 @@ Vue.use(VueRouter)
 const routes = [
 
   {
+
+    path: '/',
+    redirect: '/Jiaoyou'
+
+  },
+  {
     path: '/phone_binding',
     component: () => import('../views/cjq/Phone_binding.vue')
   },
@@ -37,34 +43,28 @@ const routes = [
   {
     path: '/vedio',
     name: 'vedio',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/Vedio.vue')
+    component: () => import('../views/Vedio.vue')
   },
   
   {
     path: '/complete',
     name: 'complete',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/complete.vue')
+    component: () => import('../views/Complete.vue')
   },
   {
     path: '/fans',
     name: 'fans',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/geren/fans.vue')
+    component: () => import('../views/Geren/Fans.vue')
   },
   {
     path: '/gifts',
     name: 'gifts',
-    component: () => import(/* webpackChunkName: "vedio" */ '../views/geren/gifts.vue')
+    component: () => import('../views/Geren/Gift.vue')
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
-  },
-  {
-
-    path: '/',
-    redirect: '/Jiaoyou'
-
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/Jiaoyou',
@@ -145,11 +145,8 @@ const routes = [
   {
     path: '/Personal data',
     name: 'Personal data',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ '../views/Personal data.vue')
+      import('../views/Personal data.vue')
   },
 
   {
@@ -190,13 +187,17 @@ const routes = [
     component: () =>
       import('../views/cjq/Visited.vue')
   },
-
- 
   {
     path: '/Xiaoxi',
     name: 'Xiaoxi',
     component: Xiaoxi
   },
+  {
+    path: '/sex',
+    name: 'sex',
+    component: () =>
+      import('../views/Sex.vue')
+  }
 
 
 ]
