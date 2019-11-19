@@ -44,14 +44,19 @@ const routes = [
     path: '/vedio',
     name: 'vedio',
     component: () => import('../views/Vedio.vue')
+<<<<<<< HEAD
   },
   
   {
     path: '/complete',
     name: 'complete',
     component: () => import('../views/Complete.vue')
+=======
+>>>>>>> 3725494b7a825c2c25ed450af7b840311f5a4fb4
   },
+
   {
+<<<<<<< HEAD
     path: '/fans',
     name: 'fans',
     component: () => import('../views/Geren/Fans.vue')
@@ -65,6 +70,28 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../views/Login.vue')
+=======
+    path: '/Complete',
+    name: 'Complete',
+    component: () => import('../views/Complete.vue')
+  },
+  {
+    path: '/Fans',
+    name: 'Fans',
+    component: () => import('../views/Geren/Fans.vue')
+  },
+  {
+    path: '/gift',
+    name: 'gift',
+    component: () => import('../views/Geren/Gift.vue')
+  }, 
+
+  {
+
+    path: '/',
+    redirect: '/Jiaoyou'
+
+>>>>>>> 3725494b7a825c2c25ed450af7b840311f5a4fb4
   },
   {
     path: '/Jiaoyou',
@@ -187,6 +214,11 @@ const routes = [
     component: () =>
       import('../views/cjq/Visited.vue')
   },
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3725494b7a825c2c25ed450af7b840311f5a4fb4
   {
     path: '/Xiaoxi',
     name: 'Xiaoxi',
