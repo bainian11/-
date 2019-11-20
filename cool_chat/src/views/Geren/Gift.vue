@@ -57,7 +57,7 @@ export default {
     this.axios
       .get("/gift", {
         params: {
-          userId: 31231414
+          userId: this.$store.state.userId
         }
       })
       .then(res => {
@@ -70,7 +70,7 @@ export default {
     this.axios
       .get("/getGift", {
         params: {
-          userId: 31231414
+          userId: this.$store.state.userId
         }
       })
       .then(res => {

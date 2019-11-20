@@ -1,69 +1,62 @@
 <template>
   <div>
-    <router-link to="login"></router-link>
     <div class="header">
       <van-icon name="search" @click="search" class="search" />
       <p class="title">交友</p>
-      <div class="look">只看异性</div>
+      <div class="look" @click="opposite">只看异性</div>
     </div>
     <div id="nav">
       <van-tabs
         v-model="activeName"
         class="tab"
-        swipeable
         sticky
         animated
         :offset-top="40"
         line-width="30"
+        @click="onClick"
       >
         <van-tab title="红人" name="a">
           <div class="main-content">
-            <!-- <div class="pic"></div> -->
             <img style="display:block" src="../../assets/bg-1.jpg" alt />
-            <li>
-              <img src="../../assets/01.jpg" alt />
+            <li :key="index" v-for="(item,index) of userList">
+              <img :src="dizhi[index]" alt />
               <div class="detail">
-                <p class="name">Jessy</p>
-                <div class="sex">26</div>
+                <p class="name">{{item.nickName}}</p>
+                <div class="sex">{{item.age}}</div>
                 <br />
-                <p class="derection">我风的风阿文戈二万个呃俄给呃符文呃风个噶饿呃...</p>
+                <p class="derection">{{item.signature}}</p>
               </div>
             </li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
           </div>
         </van-tab>
 
         <van-tab title="活跃" name="b">
           <div class="main-content">
             <img style="display:block" src="../../assets/bg-1.jpg" alt />
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <li :key="index" v-for="(item,index) of userList">
+              <img :src="dizhi[index]" alt />
+              <div class="detail">
+                <p class="name">{{item.nickName}}</p>
+                <div class="sex">{{item.age}}</div>
+                <br />
+                <p class="derection">{{item.signature}}</p>
+              </div>
+            </li>
           </div>
         </van-tab>
 
         <van-tab title="新面孔" name="c">
           <div class="main-content">
             <img style="display:block" src="../../assets/bg-1.jpg" alt />
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
+            <li :key="index" v-for="(item,index) of userList">
+              <img :src="dizhi[index]" alt />
+              <div class="detail">
+                <p class="name">{{item.nickName}}</p>
+                <div class="sex">{{item.age}}</div>
+                <br />
+                <p class="derection">{{item.signature}}</p>
+              </div>
+            </li>
           </div>
         </van-tab>
       </van-tabs>
@@ -74,50 +67,83 @@
 <script>
 export default {
   data() {
+    const userList = [
+      {
+        nickName: "1111",
+        headImage: "111",
+        age: 11,
+        signature: 11111,
+        sex: 1
+      }
+    ];
+
     return {
-      activeName: "a"
+      activeName: "a",
+      userList,
+      dizhi: []
     };
   },
   methods: {
     search() {
       this.$router.push({ path: "/search" });
+      console.log(this.maindata.data.userList);
     },
-    login() {
-      if (!window.Storage) {
-        this.$router.push("/login");
+    onClick(name, title) {
+      if (title == "活跃") {
+        this.axios
+          .get("index/" + this.$store.state.userId + "/" + 2)
+          .then(req => {
+            this.userList = req.data.data;
+            this.dizhi = this.userList.map(function(value) {
+              return (value.headImage =
+                "http://139.9.116.201:8888/" + value.headImage);
+            });
+          });
+      } else if (title == "新面孔") {
+        this.axios
+          .get("index/" + this.$store.state.userId + "/" + 3)
+          .then(req => {
+            this.userList = req.data.data;
+            this.dizhi = this.userList.map(function(value) {
+              return (value.headImage =
+                "http://139.9.116.201:8888/" + value.headImage);
+            });
+          });
+      } else if (title == "红人") {
+        this.axios
+          .get("index/" + this.$store.state.userId + "/" + 1)
+          .then(req => {
+            this.userList = req.data.data;
+            this.dizhi = this.userList.map(function(value) {
+              return (value.headImage =
+                "http://139.9.116.201:8888/" + value.headImage);
+            });
+          });
       }
+    },
+    opposite() {
+      console.log("异性");
     }
   },
   beforeCreate() {
-    // 守卫
-    // this.$router.beforeEach((to, from, next) => {
-    //   if (!window.Storage) {
-    //     console.log(1);
-    //     to({ path: "/login" });
-    //     next({ path: "/login" });
-    //   } else {
-    //     next();
-    //   }
-    // });
-    if (!localStorage.getItem("phone")) {
-      console.log(1);
-      console.log(localStorage.getItem("phone"));
-      this.$router.push("/login");
+    if (!localStorage.getItem("userId")) {
+      // console.log(1);
+      // console.log(localStorage.getItem("phone"));
+      // this.$router.push("/login");
     } else {
       this.$router.push("/Jiaoyou");
-      console.log(2);
-      console.log(localStorage.getItem("phone"));
+      // console.log(2);
+      // console.log(localStorage.getItem("phone"));
     }
   },
   mounted() {
-    // this.$router.beforeEach((to, from, next) => { //to:即将前往的页面,from:从哪个页面来,next:下一步操作
-    //          if (to.matched.some(res => res.login)) {  //判断是否登录
-    //               next()
-    //          }else {
-    //               alert("请先登录")
-    //               next({path: '/login'})
-    //          }
-    //     })
+    this.axios.get("index/" + this.$store.state.userId + "/" + 1).then(req => {
+      this.userList = req.data.data;
+      this.dizhi = this.userList.map(function(value) {
+        return (value.headImage =
+          "http://139.9.116.201:8888/" + value.headImage);
+      });
+    });
   }
 };
 </script>
@@ -202,6 +228,7 @@ export default {
   float: left;
   margin-top: 0;
   position: relative;
+  color: black;
 }
 
 .main-content li img {

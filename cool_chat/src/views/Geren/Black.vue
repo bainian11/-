@@ -35,17 +35,20 @@ export default {
     del(id) {
       console.log(id);
       // this.axios.post("/blacklist/white");
-      let data = { defriendedId: 13, defriendId: 12 };
+      let data = { defriendedId: id, defriendId: this.$store.state.userId };
       this.axios.post("/blacklist/white", data).then(res => {
-        console.log(111);
+        this.axios.get("/blacklist/blacklist/" + this.$store.state.userId).then(result => {
+          this.black = result.data.data;
+        });
       });
     }
   },
   mounted() {
-    let id = 16;
-    this.axios.get("/blacklist/blacklist/" + id).then(result => {
-      this.black = result.data.data;
-    });
+    this.axios
+      .get("/blacklist/blacklist/" + this.$store.state.userId)
+      .then(result => {
+        this.black = result.data.data;
+      });
   }
 };
 </script>

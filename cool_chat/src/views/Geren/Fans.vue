@@ -106,38 +106,38 @@ export default {
     };
   },
   mounted() {
+    // 粉丝页
     this.axios
       .get("/fans", {
         params: {
-          userId: 12345678
+          userId: this.$store.state.userId
         }
       })
       .then(res => {
-        // this.sendGiftList = res.data.data;
-        // console.log(res.data.data);
         this.userList = res.data.data;
-        // console.log(this.sendGiftList);
       });
-    //
+    //关注页
     this.axios
       .get("/focus", {
         params: {
-          userId: 12345678
+          userId: this.$store.state.userId
         }
       })
       .then(res => {
-        // this.sendGiftList = res.data.data;
         console.log(res.data.data);
         this.userListt = res.data.data;
-        // console.log(this.sendGiftList);
       });
   },
   methods: {
     iffocus() {
       this.axios
         .post("/iffocus", {
-          fansId: 12345678,
+          fansId: this.$store.state.userId,
+          // 需要更改↓↓↓↓↓↓
+          // 需要更改↓↓↓↓↓↓
           caredId: 12345656
+          // 需要更改↑↑↑↑↑↑
+          // 需要更改↑↑↑↑↑↑
         })
         .then(res => {
           // this.sendGiftList = res.data.data;

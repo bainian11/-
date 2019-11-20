@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userId: "",
+    userId: "1574165630337",
     homeNavSign: true
   },
   mutations: {
@@ -14,6 +14,9 @@ export default new Vuex.Store({
       state.userId = value
     },
 
+    // getUserId(){
+    //   return state.userId;
+    // },
     changeHomeNavSign(state) {
       state.homeNavSign = false;
     },
@@ -30,5 +33,11 @@ export default new Vuex.Store({
     }
   },
   modules: {
+  },
+  getters: {
+    // 这里可以监听state的值 直接返回出去 只读取值 如果需要修改值 找mutations  需要return出去
+    readMsg(state) {
+      return state.userId
+    }
   }
 })

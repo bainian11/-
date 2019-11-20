@@ -1,7 +1,7 @@
 <template>
   <div class="sex">
     <header>
-      <van-icon name="arrow-left" class="left" @click="yzm"/>
+      <van-icon name="arrow-left" class="left" @click="yzm" />
     </header>
     <h1>性别选择</h1>
     <section>
@@ -12,9 +12,9 @@
             <span>{{item.sex}}</span>
           </p>
         </div>
-          <p>
-            <button class="btn" style="color:#fff" @click="wanshan">下一步</button>
-          </p>
+        <p>
+          <button class="btn" style="color:#fff" @click="wanshan">下一步</button>
+        </p>
       </div>
     </section>
   </div>
@@ -28,8 +28,12 @@ export default {
         { id: 0, src: "./img/women.png", sex: "女" },
         { id: 1, src: "./img/man.png", sex: "男" }
       ],
-      sureSex:undefined
+      sureSex: undefined,
+      phone: ""
     };
+  },
+  mounted() {
+    this.phone = this.$route.query.phone;
   },
   methods: {
     change(item) {
@@ -41,20 +45,23 @@ export default {
           { id: 0, src: "./img/nwomen.png", sex: "女" },
           { id: 1, src: "./img/man.png", sex: "男" }
         ];
-        that.sureSex=0;
+        that.sureSex = 0;
       } else if (item.id === 1) {
         that.src111 = [
           { id: 0, src: "./img/women.png", sex: "女" },
           { id: 1, src: "./img/nman.png", sex: "男" }
         ];
-        that.sureSex=1;
+        that.sureSex = 1;
       }
     },
-    yzm(){
-      this.$router.push('/login')
+    yzm() {
+      this.$router.push("/login");
     },
     wanshan() {
-      this.$router.push({path:'/complete/',query:this.sureSex})
+      this.$router.push({
+        path: "/complete/",
+        query: { phone: this.phone, sex: this.sureSex }
+      });
     }
   }
 };

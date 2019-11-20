@@ -8,7 +8,7 @@
     <!-- 余额 -->
     <div class="balance">
       <p class="title">余额</p>
-      <h5>{{$route.params.money}}金币</h5>
+      <h5>{{mycoin}}金币</h5>
     </div>
     <!-- 套餐 -->
     <p class="title">套餐</p>
@@ -49,14 +49,18 @@
 export default {
   name: "Account",
   data() {
-    return {};
+    return {
+      mycoin:undefined
+    };
   },
   methods:{
     back(){
       this.$router.push({path:'/Geren'})
     }
   },
-  mounted() {}
+  mounted() {
+    this.mycoin = this.$route.query.coin
+  }
 };
 </script>
 <style scoped>

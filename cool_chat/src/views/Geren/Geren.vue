@@ -10,7 +10,7 @@
         <div class="sex girl" v-if="information.sex==='女'">♀{{ information.age}}</div>
         <div class="sex boy" v-else>♂{{ information.age}}</div>
         <div class="myid">ID:{{information.userId}}</div>
-        <img :src="information.pic" alt />
+        <img :src="this.dizhi" alt />
         <p class="sign">签名：{{information.signature}}</p>
         <ul>
           <li>
@@ -44,7 +44,7 @@
       </section>
       <!-- 我的账户 -->
       <section class="wrap-account">
-        <div class="account-inner account" @click="Account">
+        <div class="account-inner account" @click="Account(information.gold)">
           <van-icon name="peer-pay" />
           <div>我的账户：{{information.gold}}</div>
         </div>
@@ -130,7 +130,8 @@ export default {
           getGift: 26
         }
       ],
-      account: [{ id: 1 }]
+      account: [{ id: 1 }],
+      dizhi: ""
     };
   },
   methods: {
@@ -147,8 +148,8 @@ export default {
     set() {
       this.$router.push({ path: "/Set" });
     },
-    Account() {
-      this.$router.push({ path: "/Account" });
+    Account(coin) {
+      this.$router.push({ path: "/Account" ,query:{coin:coin}});
     },
     data() {
       this.$router.push({ path: "/Data" });
@@ -156,14 +157,15 @@ export default {
   },
   created() {
     // console.log(this.$route);
-    let _this =this;
-    var uid = 31231414;
-    this.axios.get("/mine",{
-      params:{userId:31231414}
-    }).then(result=>{
-      console.log(result.data);
-      _this.information=result.data.data;
-    });
+    let _this = this;
+    this.axios
+      .get("/mine", {
+        params: { userId: this.$store.state.userId }
+      })
+      .then(result => {
+        _this.dizhi = "http://139.9.116.201:8888/" + result.data.data.headImage;
+        _this.information = result.data.data;
+      });
   }
 };
 </script>

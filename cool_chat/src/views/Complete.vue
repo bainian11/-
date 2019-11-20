@@ -88,7 +88,12 @@ export default {
       return this.born.year + "-" + this.born.month + "-" + this.born.day;
     }
   },
-  mounted() {},
+  mounted() {
+    console.log(this.$route.query.phone);
+    console.log(this.$route.query.sex);
+    this.phone = this.$route.query.phone;
+    this.sex = this.$route.query.sex;
+  },
   methods: {
     // 箭头显示日期界面
     timeisshow() {
@@ -143,17 +148,18 @@ export default {
           phone: this.phone,
           sex: this.sex,
           headImage: this.head,
-          nickName: this.nickName,
+          nickName: this.nickname,
           birthday: this.birthday
         })
         .then(res => {
-          console.log(res.data.data.userId);
-          this.$store.commit("sendUserId", res.data.data.userId);
+          if (res.data.data.userId) {
+            this.$store.commit("sendUserId", res.data.data.userId);
+            console.log(res.data.data.userId);
+            this.$router.push({
+              path: "/jiaoyou"
+            });
+          }
         });
-      this.$router.push({
-        path: "/jiaoyou",
-        query: {}
-      });
     }
   }
 };

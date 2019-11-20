@@ -92,16 +92,16 @@ export default {
           }
         })
         .then(result => {
-          if (result.data) {
+          if (result.data.data) {
             // 存在
             let storage = window.localStorage;
             // setitem()参数1：key，参数2：value
-            storage.setItem("phone", this.value);
-            this.$router.push({ path: "/Jiaoyou", query: result.data.userId });
+            // storage.setItem("userId", this.value);
             console.log(result.data);
+            // this.$router.push({ path: "/Jiaoyou", query: result.data.userId });
           } else {
             //不存在
-            this.$router.push({ path: "/sex", query: result.data.phone });
+            this.$router.push({ path: "/sex", query: { phone: this.value } });
             console.log(result.data);
           }
         });
