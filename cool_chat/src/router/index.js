@@ -164,19 +164,25 @@ const routes = [
     path: '/personInfo',
     name: 'personInfo',
     component: () =>
-      import('../views/personInfo/personInfo.vue')
+      import('../views/Personaldetails/Personinfo.vue')
   },
   {
     path: '/extractdetails',
     name: 'extractdetails',
     component: () =>
-      import('../views/extractDetails/Extractdetails.vue')
+      import('../views/Personaldetails/Extractdetails.vue')
   },
   {
     path: '/conversation',
     name: 'conversation',
     component: () =>
-      import('../views/Conversation/Conversation.vue')
+      import('../views/Personaldetails/Conversation.vue')
+  },
+  {
+    path: '/album',
+    name: 'album',
+    component: () =>
+      import('../views/Personaldetails/Album.vue')
   },
   {
     path: '/set_up',

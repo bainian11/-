@@ -75,7 +75,7 @@
             </ul>
         </div>
         <div><van-cell title="收到的礼物 56" is-link /></div>
-        <div class="pictureWrap">
+        <div class="pictureWrap addMarginBottom">
             <ul>
                 <li><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2136146216,1955357192&fm=26&gp=0.jpg" alt=""></li>
                 <li><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2136146216,1955357192&fm=26&gp=0.jpg" alt=""></li>
@@ -97,6 +97,9 @@
             <van-icon name="chat"  class="flexInner1"/>
             <div class="flexInner3">视讯聊天（空闲中）</div>
         </div>
+        <!-- <van-cell is-link @click="showPopup">展示弹出层</van-cell> -->
+
+        <!-- <van-popup v-model="show">内容</van-popup> -->
     </div>
 </template>
 
@@ -107,11 +110,13 @@ export default {
     },
     data() {
         return {
-
+            show: false
         };
     },
     methods: {
-
+        showPopup() {
+            this.show = true;
+        }
     },
     mounted() {
         this.$store.dispatch('changeHomeNavSign');
@@ -237,6 +242,10 @@ export default {
         overflow-x: scroll;
         border-bottom: 1px solid #e6e6e6;
     }
+
+    .addMarginBottom {
+        margin-bottom: 48px;
+    }
     .pictureWrap ul {
         display: flex;
         white-space: nowrap;
@@ -257,6 +266,10 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
     }
     .personInfoBottom .van-icon::before {
         background-image: linear-gradient(to bottom,#fe4b68,#ff8c5f);
