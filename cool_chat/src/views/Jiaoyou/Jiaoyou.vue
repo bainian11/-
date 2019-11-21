@@ -127,13 +127,13 @@ export default {
   },
   beforeCreate() {
     if (!localStorage.getItem("userId")) {
-      // console.log(1);
-      // console.log(localStorage.getItem("phone"));
-      // this.$router.push("/login");
+      console.log(1);
+      console.log(localStorage.getItem("userId"));
+      this.$router.push("/login");
     } else {
       this.$router.push("/Jiaoyou");
       // console.log(2);
-      // console.log(localStorage.getItem("phone"));
+      console.log(localStorage.getItem("userId"));
     }
   },
   mounted() {

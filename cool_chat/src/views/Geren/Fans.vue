@@ -1,7 +1,8 @@
 <template>
   <div class="wrap">
     <div class="title">
-      <van-icon name="arrow-left" class="icon" />我的关注
+      <van-icon click="back" name="arrow-left" class="icon" @click="back"/>
+      我的关注
     </div>
     <van-tabs v-model="active">
       <!-- 分页1 -->
@@ -16,16 +17,16 @@
               {{user.nickName}}
               <span class="man">♂ {{user.age}}</span>
               <div class="ygz">
-                <div class="gou">√</div>
+                <div class="gou" >√</div>
                 <span class="txt" @click="iffocus">已关注</span>
               </div>
             </div>
             <div class="nickname" v-else>
               {{user.nickName}}
-              <span class="woman">♀ {{user.age}}</span>
+              <span class="woman" >♀ {{user.age}}</span>
               <div class="ygz">
                 <div class="gou">√</div>
-                <span class="txt" @click="iffocus">已关注</span>
+                <span class="txt" @click="iffocus" >已关注</span>
               </div>
             </div>
             <!--  -->
@@ -157,6 +158,10 @@ export default {
               // console.log(this.sendGiftList);
             });
         });
+    },
+    back() {
+      console.log(1);
+      this.$router.push({ path: "/Geren" });
     }
   }
 };

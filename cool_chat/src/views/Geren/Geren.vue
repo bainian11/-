@@ -17,7 +17,7 @@
             <span class="follow">关注</span>
             {{information.caresNum}}
           </li>
-          <li>
+          <li @click="fans(information.userId)">
             <span class="follow">粉丝</span>
             {{information.fansNum}}
           </li>
@@ -150,6 +150,10 @@ export default {
     },
     Account(coin) {
       this.$router.push({ path: "/Account" ,query:{coin:coin}});
+    },
+    // 粉丝
+    fans(userId){
+      this.$router.push({path:"/fans",query:{userId:userId}})
     },
     data() {
       this.$router.push({ path: "/Data" });
