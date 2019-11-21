@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <header>
-      <van-icon name="arrow-left" class="left" />
+      <!-- <van-icon name="arrow-left" class="left" /> -->
     </header>
     <h1>验证码登录</h1>
     <p>
@@ -100,6 +100,9 @@ export default {
             this.$router.push({ path: "/Jiaoyou", query: result.data.userId });
           } else {
             //不存在
+            let storage = window.localStorage;
+            // setitem()参数1：key，参数2：value
+            storage.setItem("userId", this.value);
             this.$router.push({ path: "/sex", query: { phone: this.value } });
           }
         });

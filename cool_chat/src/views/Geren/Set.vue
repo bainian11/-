@@ -21,7 +21,7 @@
         <span class="text">清除缓存</span>
         <span class="cache">25M&nbsp;立即清理</span>
       </div>
-      <div class="list">
+      <div class="list" >
         <span class="text">退出账号</span>
         <van-icon name="arrow" />
       </div>
@@ -35,8 +35,11 @@ export default {
     backto(){
         this.$router.push({path:'/Geren'})
 
-    }
-  }
+    },
+  //   quit(){
+  //     this.
+
+  // }
 };
 </script>
 

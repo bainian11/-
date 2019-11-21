@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userId: "1574165630337",
+    userId: "31231414",
     homeNavSign: true
   },
   mutations: {

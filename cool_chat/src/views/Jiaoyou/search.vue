@@ -65,7 +65,7 @@ export default {
       if (e.keyCode == 13) {
         // console.log(this.value);
         this.axios.get("/search/" + this.value).then(result => {
-          if (result.data.data.userId) {
+          if (result.data.data) {
             this.userList = result.data.data;
             console.log(1)
             console.log(result.data.data);

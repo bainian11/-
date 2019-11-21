@@ -21,7 +21,7 @@ export default {
     return {
       messages,
       uid: {
-        userId: 31231414
+        userId: this.$store.state.userId
       }
     };
   },
@@ -35,7 +35,7 @@ export default {
     this.axios({
       url: "/inform",
       params: {
-        userId: 31231414
+        userId: this.$store.state.userId
       },
       methods: "get"
     }).then(res => {
