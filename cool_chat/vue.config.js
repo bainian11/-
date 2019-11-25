@@ -20,7 +20,7 @@ module.exports = {
         proxy: {
             // 上传头像
             '/touxiang': {
-                target: 'http://10.31.157.12:8010',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -28,7 +28,7 @@ module.exports = {
                 }
             },
             '/inform': {
-                target: 'http://10.31.157.12:8017',
+                target: 'http://121.36.60.20:8016',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -37,7 +37,7 @@ module.exports = {
             },
             // 送出礼物
             '/gift': {
-                target: 'http://10.31.157.12:8013',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -46,7 +46,7 @@ module.exports = {
             },
             //收到礼物 
             '/getGift': {
-                target: 'http://10.31.157.12:8014',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -55,7 +55,7 @@ module.exports = {
             },
             // 完善信息提交
             '/complete': {
-                target: 'http://10.31.157.12:8020',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -64,7 +64,7 @@ module.exports = {
             },
             // 我的粉丝
             '/fans': {
-                target: 'http://10.31.157.12:8012',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -73,7 +73,7 @@ module.exports = {
             },
             // 我的关注
             '/focus': {
-                target: 'http://10.31.157.12:8012',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -82,7 +82,7 @@ module.exports = {
             },
             // 取消关注
             '/iffocus': {
-                target: 'http://10.31.157.12:8012',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -91,7 +91,7 @@ module.exports = {
             },
             // 我的，个人
             '/mine': {
-                target: 'http://10.31.157.12:8018',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -100,7 +100,7 @@ module.exports = {
             },
             // 黑名单
             '/blacklist': {
-                target: 'http://10.31.157.12:8011',
+                target: 'http://121.36.60.20:8020',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -109,7 +109,7 @@ module.exports = {
             },
             // 登录
             '/register': {
-                target: 'http://10.31.157.12:8014',
+                target: 'http://121.36.60.20:8014',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {
@@ -118,12 +118,12 @@ module.exports = {
             },
             // 
             '/index': {
-                target: 'http://10.31.157.12:8016',
+                target: 'http://121.36.60.20:8016',
                 ws: true,
                 changeOrigin: true,
             },
             '/search': {
-                target: 'http://10.31.157.12:8016',
+                target: 'http://121.36.60.20:8016',
                 ws: true,
                 changeOrigin: true,
                 pathRewrite: {

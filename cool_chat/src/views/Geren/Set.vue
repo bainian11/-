@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="head">
-      <van-icon name="arrow-left" @click="backto"/>
+      <van-icon name="arrow-left" @click="backto" />
       <div class="title">设置</div>
     </div>
     <div class="content">
@@ -21,8 +21,8 @@
         <span class="text">清除缓存</span>
         <span class="cache">25M&nbsp;立即清理</span>
       </div>
-      <div class="list" >
-        <span class="text">退出账号</span>
+      <div class="list" @click="quit">
+        <span class="text" >退出账号</span>
         <van-icon name="arrow" />
       </div>
     </div>
@@ -36,11 +36,14 @@ export default {
         this.$router.push({path:'/Geren'})
 
     },
-  //   quit(){
-  //     this.
+    quit(){
+      console.log(1)
+      localStorage.removeItem("userId");
+      this.$router.push('/login')
+      }
 
-  // }
-};
+  }
+}
 </script>
 
 <style scoped>
@@ -81,12 +84,12 @@ export default {
   color: #000;
 }
 .list .van-icon {
-   margin-right: 15px;
-   font-size: 9px;
-   color: #b3b3b3;
+  margin-right: 15px;
+  font-size: 9px;
+  color: #b3b3b3;
 }
 .cache {
-     display: inline-block;
+  display: inline-block;
   height: 100%;
   font-size: 14px;
   color: #000;

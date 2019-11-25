@@ -158,6 +158,9 @@ export default {
             this.$router.push({
               path: "/jiaoyou"
             });
+            let storage = window.localStorage;
+            // setitem()参数1：key，参数2：value
+            storage.setItem("userId", this.phone);
           }
         });
     }

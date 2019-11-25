@@ -67,16 +67,10 @@ export default {
         this.axios.get("/search/" + this.value).then(result => {
           if (result.data.data) {
             this.userList = result.data.data;
-            console.log(1)
-            console.log(result.data.data);
-            console.log(result);
           } else{
             this.f = true;
             
           }
-          this.value=''
-        //   console.log(result.data);
-        //   console.log(result);
         });
       }
     }

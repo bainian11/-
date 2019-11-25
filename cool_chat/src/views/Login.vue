@@ -100,9 +100,7 @@ export default {
             this.$router.push({ path: "/Jiaoyou", query: result.data.userId });
           } else {
             //不存在
-            let storage = window.localStorage;
-            // setitem()参数1：key，参数2：value
-            storage.setItem("userId", this.value);
+            
             this.$router.push({ path: "/sex", query: { phone: this.value } });
           }
         });
